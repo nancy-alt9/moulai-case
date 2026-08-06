@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哞来了 · 视频号 ADQ 高端酸奶起量案例 · 一页版</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --primary:#e85a2c;
+    --primary2:#f28654;
+    --primary3:#ff7a45;
+    --accent:#ffd54f;
+  --accent2:#f2b01e;
+    --bg:#fff8f2;
+ --card:#ffffff;
+    --gray:#fdf3ec;
+    --gray2:#f2e2d6;
+    --gray3:#c9ab97;
+    --text:#3e1f14;
+    --text2:#6d4a3d;
+    --text3:#a08876;
+    --female:#e85a8a;
+    --male:#3d7fd6;
+    --kid:#f2b01e;
+  }
+  html,body{
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+    background:linear-gradient(135deg,#e85a2c 0%,#f28654 100%);
+    color:var(--text);min-height:100vh;
+  }
+  .page{
+    max-width:1280px;margin:24px auto;background:#fff;border-radius:18px;
+    box-shadow:0 20px 60px rgba(80,30,10,.35);overflow:hidden;
+  }
+
+  /* 顶部标题栏 */
+  .hero{
+    background:linear-gradient(135deg,#e85a2c 0%,#f2662f 55%,#ff8a4c 100%);
+    color:#fff;padding:32px 44px 28px;position:relative;overflow:hidden;
+  }
+.hero::before{
+    content:"";position:absolute;top:-40%;right:-10%;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(255,213,79,.28),transparent 65%);
+  }
+  .hero-product{
+    position:absolute;top:24px;right:32px;width:150px;height:200px;
+    object-fit:cover;border-radius:14px;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    border:3px solid rgba(255,255,255,.85);
+    z-index:2;
+  }
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;
+  letter-spacing:3px;font-weight:600;opacity:.9;margin-bottom:14px;
+  }
+  .hero-tag .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;}
+  .hero h1{font-size:38px;font-weight:800;line-height:1.2;letter-spacing:1px;margin-bottom:8px;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero .sub{font-size:15px;opacity:.9;letter-spacing:1px;font-weight:300;margin-bottom:20px;}
+  .hero .quote{
+    display:inline-block;background:rgba(255,213,79,.16);border:1px solid rgba(255,213,79,.45);
+ padding:10px 18px;border-radius:10px;font-size:13px;line-height:1.7;
+  max-width:840px;position:relative;z-index:2;
+  }
+  .hero .quote b{color:var(--accent);}
+
+  /* KPI 条 */
+  .kpi-bar{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    background:#3e1f14;
+  }
+  .kpi{
+    padding:22px 20px;color:#fff;text-align:center;
+    border-right:1px solid rgba(255,255,255,.08);position:relative;
+  }
+  .kpi:last-child{border-right:none;}
+  .kpi .num{font-size:36px;font-weight:800;color:var(--accent);line-height:1;letter-spacing:.5px;}
+  .kpi .num small{font-size:16px;font-weight:700;margin-left:2px;}
+  .kpi .label{font-size:12px;opacity:.8;margin-top:8px;letter-spacing:2px;font-weight:600;}
+  .kpi .desc{font-size:11px;opacity:.55;margin-top:4px;letter-spacing:.5px;}
+
+  /* 内容主体 */
+  .body{padding:32px 44px 36px;}
+
+  .section-title{
+    display:flex;align-items:center;gap:12px;
+    font-size:18px;font-weight:800;color:var(--primary);
+    margin-bottom:18px;letter-spacing:.5px;
+  }
+  .section-title::before{
+    content:"";width:4px;height:20px;background:linear-gradient(180deg,var(--primary),var(--accent));border-radius:2px;
+  }
+  .section-title .en{font-size:11px;color:var(--text3);letter-spacing:2px;font-weight:600;margin-left:6px;}
+
+  /* 选品洞察 */
+  .insight{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:28px;
+  }
+  .insight-card{
+    background:linear-gradient(180deg,#fff,#fff6ef);
+    border:1.5px solid var(--gray2);border-radius:14px;
+    padding:22px 24px;position:relative;overflow:hidden;
+  }
+  .insight-card::before{
+    content:"";position:absolute;top:0;left:0;height:4px;width:100%;
+    background:linear-gradient(90deg,var(--primary),var(--primary2));
+  }
+  .insight-card h3{font-size:16px;font-weight:800;color:var(--primary);margin-bottom:12px;}
+  .insight-card p{font-size:13px;color:var(--text2);line-height:1.85;}
+  .insight-card p b{color:var(--text);}
+  .insight-card .hl{background:linear-gradient(transparent 60%,#ffe8a8 60%);font-weight:700;color:var(--text);}
+  .insight-points{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px;}
+  .insight-points li{position:relative;padding-left:18px;font-size:12.5px;color:var(--text2);line-height:1.6;}
+  .insight-points li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:2px;background:var(--primary2);}
+
+  /* 人群圈层 */
+  .aud{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+  .aud-item{
+    background:#fff;border:1px solid var(--gray2);border-radius:10px;
+    padding:12px 12px;text-align:center;
+  }
+  .aud-item.a{border-color:#f5c8a0;background:#fff6ee;}
+  .aud-item.b{border-color:#f5c8d6;background:#fff5f8;}
+  .aud-item.c{border-color:#c7dcf5;background:#f2f8ff;}
+  .aud-item.d{border-color:#f5deb3;background:#fff9ec;}
+  .aud-item .emoji{font-size:22px;margin-bottom:4px;}
+  .aud-item .n{font-size:12px;color:var(--text);font-weight:800;}
+  .aud-item .p{font-size:11px;color:var(--text3);margin-top:3px;line-height:1.4;}
+
+  /* 内容力协作机制 */
+  .collab{
+    display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:12px;align-items:stretch;margin-bottom:28px;
+  }
+  .collab-node{
+    background:linear-gradient(160deg,#fff,#fff4ec);
+    border:1.5px solid var(--gray2);border-radius:14px;
+padding:20px 20px;position:relative;text-align:center;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .collab-node .role-icon{font-size:30px;margin-bottom:8px;}
+  .collab-node .role{font-size:11px;color:var(--text3);letter-spacing:2px;font-weight:700;margin-bottom:6px;}
+  .collab-node h4{font-size:16px;font-weight:800;color:var(--primary);margin-bottom:8px;}
+  .collab-node p{font-size:12.5px;color:var(--text2);line-height:1.7;}
+.collab-node p b{color:var(--text);}
+  .collab-node .org-badge{
+  display:inline-block;margin-top:8px;background:var(--primary);color:#fff;
+    font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;letter-spacing:.5px;
+  }
+  .collab-arrow{
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;color:var(--primary2);font-weight:900;
+  }
+
+  /* 爆款短视频拆解 */
+  .viral{
+    display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:stretch;margin-bottom:16px;
+  }
+  .viral-video{
+    background:#f7f2ee;border:1px solid var(--gray2);border-radius:14px;padding:14px;
+    display:flex;flex-direction:column;
+  }
+  .viral-video img{
+    width:100%;border-radius:10px;object-fit:cover;aspect-ratio:9/16;
+    box-shadow:0 4px 14px rgba(80,30,10,.15);
+  }
+  .viral-video .vmeta{
+    display:flex;justify-content:space-around;margin-top:12px;padding-top:10px;
+    border-top:1px dashed var(--gray2);
+  }
+  .viral-video .vmeta .vm{text-align:center;}
+  .viral-video .vmeta .vm .vn{font-size:17px;font-weight:800;color:var(--primary);}
+  .viral-video .vmeta .vm .vl{font-size:10px;color:var(--text3);margin-top:2px;}
+  .viral-video .vcap{
+    font-size:11.5px;color:var(--text2);line-height:1.6;margin-top:12px;
+    background:#fff;border-radius:8px;padding:10px 12px;border-left:3px solid var(--accent2);
+  }
+  .viral-video .vcap b{color:var(--primary);}
+  .viral-analysis{
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .va-highlight{
+    background:linear-gradient(90deg,#fff6e6,#fff0d0);
+    border-left:4px solid var(--accent2);border-radius:10px;padding:12px 16px;
+    font-size:13px;color:var(--text);line-height:1.7;
+  }
+  .va-highlight b{color:var(--primary);}
+  .va-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;}
+  .va-item{
+    background:linear-gradient(180deg,#fff,#fff6ef);
+    border:1.5px solid var(--gray2);border-radius:12px;padding:14px 16px;
+  }
+  .va-item .va-t{font-size:13px;font-weight:800;color:var(--primary);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+  .va-item .va-t .n{background:var(--primary);color:#fff;width:20px;height:20px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+  .va-item p{font-size:12px;color:var(--text2);line-height:1.65;}
+.va-item p b{color:var(--text);}
+
+  /* 商详转化力 */
+  .detail-sec{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;margin-bottom:28px;
+  }
+  .detail-imgs{
+    background:#f7f2ee;border:1px solid var(--gray2);border-radius:14px;padding:16px;
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  }
+  .detail-imgs img{
+ width:100%;border-radius:10px;object-fit:cover;aspect-ratio:9/16;
+    box-shadow:0 3px 12px rgba(80,30,10,.14);border:1px solid var(--gray2);
+  }
+  .detail-info{
+    display:flex;flex-direction:column;justify-content:center;gap:12px;
+  }
+  .detail-info .di-block{
+    background:linear-gradient(180deg,#fff,#fff6ef);
+    border:1.5px solid var(--gray2);border-radius:12px;padding:14px 18px;
+  }
+  .detail-info .di-block h4{font-size:14px;font-weight:800;color:var(--primary);margin-bottom:8px;}
+  .detail-info .di-block p{font-size:12.5px;color:var(--text2);line-height:1.7;}
+  .detail-info .di-block p b{color:var(--text);}
+  .detail-modules{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .detail-modules span{
+    background:#fff2e6;border:1px solid #f5c8a0;color:var(--primary);
+    font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;
+  }
+
+  /* 公式带 */
+  .formula{
+    background:linear-gradient(90deg,#fff9e6,#fff3d0,#fff9e6);
+    border-left:4px solid var(--accent2);border-right:4px solid var(--accent2);
+    border-radius:10px;padding:18px 24px;margin-bottom:28px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .formula .label{
+    background:var(--primary);color:#fff;
+    font-size:12px;font-weight:800;letter-spacing:2px;
+    padding:6px 12px;border-radius:6px;flex-shrink:0;
+  }
+  .formula .expr{
+font-size:16px;font-weight:800;color:var(--primary);
+    letter-spacing:1px;line-height:1.6;
+  }
+  .formula .expr .op{color:var(--accent2);margin:0 6px;font-size:18px;}
+  .formula .expr .brace{color:var(--text3);}
+
+  /* 起量三步链路 */
+  .ops-flow{
+ display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:14px;align-items:stretch;margin-bottom:28px;
+  }
+  .ops-step{
+    background:linear-gradient(160deg,#fffaf5,#fff2e6);
+    border:1.5px solid var(--gray2);border-radius:14px;
+    padding:18px 20px 16px;position:relative;
+    display:flex;flex-direction:column;
+  }
+  .ops-step.step3{
+    background:linear-gradient(160deg,#fffaee,#fff4d8);
+    border-color:#f2d78a;
+  }
+  .ops-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .ops-no{
+    font-family:'JetBrains Mono','SF Mono',monospace;
+    font-size:20px;font-weight:800;color:var(--primary);
+    background:#fff;border:1.5px solid var(--primary2);
+    width:34px;height:34px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .ops-step.step3 .ops-no{color:var(--accent2);border-color:var(--accent2);}
+  .ops-title{font-size:14px;font-weight:800;color:var(--primary);line-height:1.35;}
+  .ops-lead{
+    font-size:12.5px;color:var(--text2);line-height:1.7;
+padding:10px 12px;background:rgba(255,255,255,.75);
+    border-left:3px solid var(--primary2);border-radius:6px;margin-bottom:10px;
+  }
+  .ops-step.step3 .ops-lead{border-left-color:var(--accent2);}
+  .ops-lead b{color:var(--primary);}
+  .ops-list{
+    list-style:none;padding:0;margin:0;font-size:12px;color:var(--text2);
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .ops-list li{position:relative;padding-left:14px;line-height:1.6;}
+  .ops-list li::before{
+    content:"";position:absolute;left:0;top:8px;
+    width:6px;height:6px;border-radius:2px;background:var(--primary2);
+  }
+  .ops-step.step3 .ops-list li::before{background:var(--accent2);}
+  .ops-list b{color:var(--text);font-weight:700;}
+  .ops-arrow{
+    display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:var(--primary2);font-weight:800;user-select:none;
+  }
+
+  /* 可复制方法论（压轴） */
+  .method{
+    background:linear-gradient(135deg,#3e1f14,#5a2e1c);
+    border-radius:16px;padding:26px 30px;margin-bottom:8px;color:#fff;
+  }
+  .method-title{
+    display:flex;align-items:center;gap:12px;font-size:19px;font-weight:800;
+    color:var(--accent);margin-bottom:6px;
+  }
+  .method-sub{font-size:12.5px;color:rgba(255,255,255,.7);margin-bottom:20px;letter-spacing:.5px;}
+  .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .method-card{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,213,79,.25);
+    border-radius:12px;padding:18px 20px;
+  }
+  .method-card .mc-tag{
+    display:inline-block;background:var(--accent);color:var(--text);
+    font-size:11px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:6px;margin-bottom:10px;
+  }
+  .method-card h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px;}
+  .method-card p{font-size:12.5px;color:rgba(255,255,255,.82);line-height:1.75;}
+  .method-card p b{color:var(--accent);}
+
+  /* 底部 */
+  .footer{
+    background:var(--gray);padding:16px 44px;
+    display:flex;justify-content:center;align-items:center;text-align:center;
+    font-size:11px;color:var(--text3);letter-spacing:1px;border-top:1px solid var(--gray2);
+  }
+  .footer .brand{font-weight:700;color:var(--primary);letter-spacing:2px;}
+  .footer .brand b{color:var(--accent2);}
+
+  @media print{
+    html,body{background:#fff;}
+    .page{margin:0;box-shadow:none;border-radius:0;max-width:100%;}
+    .edit-toolbar,.edit-hint,.toast{display:none !important;}
+  }
+
+  /* ============ 编辑模式 ============ */
+  .edit-toolbar{
+    position:fixed;top:16px;right:16px;z-index:999;
+    background:rgba(62,31,20,.92);color:#fff;
+    padding:10px 14px;border-radius:10px;
+    font-size:12px;letter-spacing:.5px;line-height:1.6;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);backdrop-filter:blur(8px);max-width:260px;
+  }
+  .edit-toolbar b{color:var(--accent);}
+  .edit-toolbar .status{display:inline-block;padding:2px 8px;border-radius:6px;font-weight:700;margin-left:4px;}
+  .edit-toolbar .status.off{background:#6d4a3d;color:#e8d5c8;}
+  .edit-toolbar .status.on{background:var(--accent);color:var(--text);}
+  .edit-toolbar kbd{
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+    border-radius:4px;padding:1px 6px;font-family:inherit;font-size:11px;font-weight:700;color:var(--accent);
+  }
+  .edit-toolbar .hint-line{margin-top:6px;opacity:.85;}
+  body.editing [data-editable]{
+    outline:1.5px dashed rgba(232,90,44,.5);outline-offset:2px;cursor:text;
+    transition:outline-color .15s,background .15s;border-radius:3px;
+  }
+  body.editing [data-editable]:hover{outline:1.5px dashed var(--primary);background:rgba(232,90,44,.06);}
+  body.editing [data-editable]:focus{outline:2px solid var(--primary);background:rgba(232,90,44,.1);box-shadow:0 0 0 3px rgba(232,90,44,.18);}
+  body.editing .hero [data-editable],
+  body.editing .kpi-bar [data-editable],
+  body.editing .method [data-editable]{outline-color:rgba(255,213,79,.6);}
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+    background:var(--primary);color:#fff;padding:12px 24px;border-radius:8px;
+    font-size:13px;letter-spacing:.5px;box-shadow:0 8px 24px rgba(0,0,0,.35);
+    z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
+  .toast b{color:var(--accent);}
+</style>
+</head>
+<body class="">
+
+<div class="page">
+
+  <!-- ① 顶部标题栏 -->
+<div class="hero">
+    <img src="assets/detail-首屏卖点.jpg" alt="哞来了 A2β-酪蛋白希腊厚酸奶" class="hero-product"/>
+    <div class="hero-tag"><span class="dot"></span><span data-editable="">CASE · 食品饮料 · 视频号 ADQ 起量</span></div>
+    <h1><span data-editable="">哞来了 · 视频号</span><span class="accent" data-editable="">&nbsp;高端酸奶精准人群起量</span></h1>
+    <div class="sub" data-editable="">选对品 · 打磨爆款内容脚本 · ADQ 加热放大 —— 视频号冷启首日 GMV 20w+</div>
+    <div class="quote" data-editable="">
+ 🥛 高价高端的 <b>A2β-酪蛋白希腊厚酸奶</b>，在<b>视频号找到了愿为品质买单的人群</b>；
+      团长 × KOC 打磨出 <b>「先抑后扬」爆款脚本</b>，配合 <font color="#ffd54f"><b>ADQ 加热放大</b></font>，冷启首日即跑出 <b>GMV 20w+ · 单量 1200+</b>。
+    </div>
+  </div>
+
+  <!-- ② KPI 条 -->
+  <div class="kpi-bar">
+    <div class="kpi">
+   <div class="num" data-editable="">20w+</div>
+      <div class="label" data-editable="">冷启首日 GMV</div>
+      <div class="desc" data-editable="">高客单高端酸奶</div>
+    </div>
+    <div class="kpi">
+      <div class="num"><span data-editable="">1200</span><small data-editable="">+</small></div>
+      <div class="label" data-editable="">冷启首日单量</div>
+      <div class="desc" data-editable="">精准人群转化</div>
+    </div>
+    <div class="kpi">
+    <div class="num" data-editable="">16w+</div>
+      <div class="label" data-editable="">单日 ADQ 日耗</div>
+      <div class="desc" data-editable="">大流量池·稳定放量</div>
+    </div>
+  <div class="kpi">
+      <div class="num" data-editable="">1024</div>
+    <div class="label" data-editable="">爆款视频转发</div>
+      <div class="desc" data-editable="">转发＞点赞·强种草</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ③ 选品洞察 -->
+    <div class="section-title">
+      <span data-editable="">选品洞察：好品 + 对的人群 + 对的平台&nbsp;</span>
+      <span class="en" data-editable="">/ PRODUCT & AUDIENCE FIT</span>
+    </div>
+  <div class="insight">
+      <div class="insight-card">
+        <h3 data-editable="">为什么这个品「选对了」</h3>
+        <p data-editable="">
+          哞来了主打 <b>A2β-酪蛋白 · 5 倍生牛乳浓缩</b>的高端希腊厚酸奶，客单价 <b>69.9 元起</b>，属于典型<span class="hl">高价值、强卖点、需要被"讲清楚"</span>的品。这类品在泛流量平台容易因"太贵"被划走，<b>关键不在压价，而在找到愿意为品质付费的人</b>。
+        </p>
+        <ul class="insight-points">
+       <li data-editable=""><b>差异化清晰</b>：A2 奶源 / 干噎吃法（猎奇）/ 高蛋白，天然自带话题</li>
+          <li data-editable=""><b>高客单撑得起投放</b>：单量不大也能跑出可观 GMV 与日耗</li>
+          <li data-editable=""><b>经平台适配验证</b>，最终锚定<span class="hl">视频号生态</span>——在这里找到了对的人</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <h3 data-editable="">对的人群：高价值决策圈层</h3>
+        <p data-editable="" style="font-size:12.5px;">
+ 文案主动筛选<b>"不差钱的宝子"</b>——把"贵"变成人群筛选器，而非劝退点。视频号生态精准触达了这批人：
+      </p>
+  <div class="aud">
+          <div class="aud-item a">
+            <div class="emoji">🏃</div>
+  <div class="n" data-editable="">代餐控</div>
+            <div class="p" data-editable="">高蛋白·饱腹代餐</div>
+        </div>
+          <div class="aud-item b">
+    <div class="emoji">👩‍🍼</div>
+        <div class="n" data-editable="">精致宝妈</div>
+       <div class="p" data-editable="">给孩子补优质蛋白</div>
+       </div>
+          <div class="aud-item c">
+ <div class="emoji">👵</div>
+         <div class="n" data-editable="">品质长辈</div>
+         <div class="p" data-editable="">给老人补蛋白</div>
+       </div>
+        <div class="aud-item d">
+     <div class="emoji">💳</div>
+        <div class="n" data-editable="">品质买单者</div>
+      <div class="p" data-editable="">认卖点·不差钱</div>
+    </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ④ 内容力协作机制 -->
+    <div class="section-title">
+      <span data-editable="">内容力协作机制：三方分工，把卖点做成爆款&nbsp;</span>
+      <span class="en" data-editable="">/ CONTENT COLLABORATION</span>
+ </div>
+    <div class="collab">
+      <div class="collab-node">
+        <div class="role-icon">🏷️</div>
+   <div class="role" data-editable="">品牌方</div>
+     <h4 data-editable="">提供产品卖点</h4>
+        <p data-editable="">输出 <b>A2 奶源、5 倍浓缩、高蛋白、代餐/补蛋白场景</b>等核心卖点与卖点素材。</p>
+      </div>
+   <div class="collab-arrow">→</div>
+      <div class="collab-node">
+ <div class="role-icon">🎬</div>
+    <div class="role" data-editable="">合作机构</div>
+        <h4 data-editable="">组织达人·出脚本·拍摄</h4>
+        <p data-editable="">机构统筹达人资源，负责<b>脚本创作与视频拍摄</b>，把品牌卖点翻译成有传播力的内容。</p>
+        <span class="org-badge" data-editable="">内容供给：莨辰</span>
+      </div>
+    <div class="collab-arrow">→</div>
+      <div class="collab-node">
+        <div class="role-icon">📱</div>
+        <div class="role" data-editable="">KOC 达人</div>
+        <h4 data-editable="">真实种草·输出内容</h4>
+        <p data-editable="">以<b>真实测评口吻</b>发布短视频，用"朋友安利"的信任感完成种草。</p>
+      </div>
+    </div>
+
+    <!-- ⑤ 爆款短视频拆解 -->
+    <div class="section-title">
+      <span data-editable="">爆款短视频拆解：一条「先抑后扬」的高转发视频&nbsp;</span>
+      <span class="en" data-editable="">/ VIRAL SCRIPT BREAKDOWN</span>
+    </div>
+    <div class="viral">
+      <div class="viral-video">
+        <img src="assets/koc-video-crop.png" alt="哞来了爆款短视频"/>
+        <div class="vmeta">
+      <div class="vm"><div class="vn" data-editable="">1024</div><div class="vl" data-editable="">转发</div></div>
+  <div class="vm"><div class="vn" data-editable="">392</div><div class="vl" data-editable="">点赞</div></div>
+          <div class="vm"><div class="vn" data-editable="">124</div><div class="vl" data-editable="">收藏</div></div>
+   </div>
+        <div class="vcap" data-editable="">
+          "贵是真贵，但好吃也是真的好吃，不差钱的宝子快去尝尝……<b>我要是不差钱</b>" —— 转发是点赞的 <b>2.6 倍</b>，典型社交货币型爆款。
+        </div>
+      </div>
+      <div class="viral-analysis">
+ <div class="va-highlight" data-editable="">
+          🔥 <b>核心信号</b>：转发(1024) 远超点赞(392)。用户看完第一反应是"发给谁去尝尝"，说明内容自传播力极强——这正是 ADQ 加热能高效放大的优质素材。
+        </div>
+  <div class="va-grid">
+        <div class="va-item">
+   <div class="va-t"><span class="n">1</span>黄金 3 秒钩子</div>
+            <p data-editable=""><b>先自曝"贵"</b>降防御，<b>再强背书"真好吃"</b>拉认同，"和普通干噎完全不一样"制造好奇，不像广告像真安利。</p>
+       </div>
+          <div class="va-item">
+            <div class="va-t"><span class="n">2</span>脚本结构</div>
+            <p data-editable="">自曝价格 <b>→</b> 强调口感 <b>→</b> 对比普通款立差异 <b>→</b> "不差钱去尝尝"软性号召，全程无硬广感。</p>
+          </div>
+          <div class="va-item">
+       <div class="va-t"><span class="n">3</span>人群筛选器</div>
+      <p data-editable=""><b>"不差钱的宝子"</b>主动筛人——把"贵"变成精准圈层的筛选器，而不是劝退理由。</p>
+          </div>
+          <div class="va-item">
+        <div class="va-t"><span class="n">4</span>金句催转发</div>
+  <p data-editable="">结尾字幕 <b>"我要是不差钱"</b>反差自嘲成为记忆点，直接催化高转发——可复制的"结尾埋梗"打法。</p>
+        </div>
+     </div>
+      </div>
+    </div>
+
+    <!-- ⑥ 商详转化力 -->
+  <div class="section-title">
+      <span data-editable="">商详转化力：视频负责拉人，详情页负责临门一脚&nbsp;</span>
+      <span class="en" data-editable="">/ DETAIL PAGE CONVERSION</span>
+    </div>
+    <div class="detail-sec">
+      <div class="detail-imgs">
+        <img src="assets/detail-首屏卖点.jpg" alt="商详首屏卖点"/>
+      <img src="assets/detail-强对比.jpg" alt="与普通酸奶强对比"/>
+      </div>
+    <div class="detail-info">
+        <div class="di-block">
+          <h4 data-editable="">详情页 = 高转化的隐形推手</h4>
+          <p data-editable="">短视频把"贵但值"种进心里，商详则用<b>科学数据 + 强对比</b>完成临门一脚，把"贵"逐条讲透、化解价格异议。</p>
+    <div class="detail-modules">
+      <span data-editable="">首屏价值主张</span>
+            <span data-editable="">为什么贵(A2·5倍浓缩)</span>
+         <span data-editable="">吸收力可视化</span>
+  <span data-editable="">vs普通酸奶对比</span>
+       <span data-editable="">营养成分表</span>
+          <span data-editable="">高端商超/权威背书</span>
+  </div>
+        </div>
+      <div class="di-block">
+    <h4 data-editable="">3 个转化亮点</h4>
+          <p data-editable=""><b>① 把"贵"讲透：</b>A2 奶源+5 倍浓缩+奶酪级工艺，价格异议逐一化解；<b>② 数据可视化：</b>92.8% 消化率、蛋白粒径对比，打动高知决策人群；<b>③ 强对比锚定高端：</b>逐项碾压普通希腊酸奶，让"贵"理所当然。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 起量公式 -->
+ <div class="formula">
+      <div class="label" data-editable="">起量公式</div>
+ <div class="expr" data-editable="">
+<span class="brace">(</span> 高价值好品 <span class="op">×</span> 视频号对的人群 <span class="brace">)</span>
+        <span class="op">×</span>
+        <span class="brace">(</span> 爆款内容脚本 <span class="op">+</span>&nbsp;ADQ 加热放大 <span class="op">+</span> 高转化商详&nbsp;<span class="brace">)</span>
+   </div>
+    </div>
+
+    <!-- ⑦ 起量三步链路 -->
+    <div class="section-title">
+      <span data-editable="">起量三步链路：选对品 → 打磨爆款脚本 → ADQ 加热放大&nbsp;</span>
+      <span class="en" data-editable="">/ THREE-STEP PATH</span>
+    </div>
+    <div class="ops-flow">
+      <div class="ops-step step1">
+        <div class="ops-head">
+   <span class="ops-no">01</span>
+      <div class="ops-title" data-editable="">选对品：匹配视频号节点与人群</div>
+        </div>
+        <p class="ops-lead" data-editable="">
+      选<b>高价值、强卖点、有话题</b>的品，匹配视频号<b>节点与人群调性</b>——高端酸奶在这里能找到愿为品质付费的人。
+        </p>
+        <ul class="ops-list">
+          <li data-editable=""><b>品类特征</b>：A2 高端希腊厚酸奶 · 客单 69.9 起</li>
+<li data-editable=""><b>人群匹配</b>：代餐控 / 精致宝妈 / 品质长辈</li>
+          <li data-editable=""><b>话题点</b>：干噎吃法猎奇 · 接近母乳蛋白</li>
+     <li data-editable=""><b>平台锚定</b>：视频号找到对的人群</li>
+        </ul>
+      </div>
+      <div class="ops-arrow">→</div>
+      <div class="ops-step step2">
+    <div class="ops-head">
+          <span class="ops-no">02</span>
+          <div class="ops-title" data-editable="">打磨爆款脚本：素材量足够多且丰富</div>
+        </div>
+     <p class="ops-lead" data-editable="">借助<b>团长机构</b>组织达人批量产出，素材<b>量足够多、够丰富</b>，脚本紧扣人群诉求，跑出高转发爆款。</p>
+    <ul class="ops-list">
+        <li data-editable=""><b>组织方式</b>：团长机构统筹达人矩阵</li>
+          <li data-editable=""><b>脚本框架</b>：先抑后扬「贵但值」</li>
+     <li data-editable=""><b>匹配诉求</b>：代餐/补蛋白 场景切入</li>
+    <li data-editable=""><b>爆款信号</b>：单条转发 1024（＞点赞）</li>
+        </ul>
+      </div>
+      <div class="ops-arrow">→</div>
+      <div class="ops-step step3">
+        <div class="ops-head">
+          <span class="ops-no">03</span>
+          <div class="ops-title" data-editable="">ADQ 加热放大：一定要用 ADQ</div>
+      </div>
+        <p class="ops-lead" data-editable="">用 <b>ADQ</b> 加热优质素材——<b>最大流量池、稳定性强、天花板高</b>，专业投放工具与报表支撑放量。</p>
+        <ul class="ops-list">
+          <li data-editable=""><b>流量池</b>：最大流量池 · 量大天花板高</li>
+          <li data-editable=""><b>稳定性</b>：投放稳定 · 可持续放量</li>
+     <li data-editable=""><b>工具力</b>：专业化投放工具与数据报表</li>
+ <li data-editable=""><b>放量结果</b>：单日日耗 16w+ · 冷启首日 GMV 20w+</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ⑧ 可复制方法论（压轴） -->
+    <div class="method">
+   <div class="method-title" data-editable="">🚀 可复制方法论：视频号 + ADQ 的起量确定性</div>
+      <div class="method-sub" data-editable="">面向客户 / 机构 / 团长 / KOC —— 这套打法可复制，视频号与 ADQ 值得投入</div>
+      <div class="method-grid">
+        <div class="method-card">
+          <span class="mc-tag" data-editable="">选品</span>
+        <h4 data-editable="">匹配视频号节点与人群</h4>
+  <p data-editable="">优先选<b>高价值、强卖点、有话题</b>的品，把"贵"转化为人群筛选器；在视频号找到<b>愿为品质买单的对的人</b>。</p>
+        </div>
+        <div class="method-card">
+ <span class="mc-tag" data-editable="">内容</span>
+          <h4 data-editable="">素材要足够多且丰富</h4>
+   <p data-editable="">借助<b>团长机构</b>规模化产出素材；脚本要<b>匹配人群诉求</b>，善用"先抑后扬 + 结尾埋梗"催化转发与种草。</p>
+        </div>
+        <div class="method-card">
+      <span class="mc-tag" data-editable="">投放</span>
+<h4 data-editable="">一定要用 ADQ</h4>
+       <p data-editable="">ADQ 拥有<b>最大流量池、强稳定性、高天花板</b>，配合专业投放工具与报表，是把爆款素材放量的确定性抓手。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ⑨ 底部 -->
+  <div class="footer">
+    <div class="brand" data-editable="">CASE · <b>哞来了</b> · 视频号 ADQ 高端酸奶起量案例 · 一页速览版</div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const body = document.body;
+  document.querySelectorAll('.edit-toolbar, .toast').forEach(n => n.remove());
+
+  const toolbar = document.createElement('div');
+  toolbar.className = 'edit-toolbar';
+  toolbar.innerHTML = '编辑模式 <span class="status off" id="editStatus">OFF</span>' +
+    '<div class="hint-line"><kbd>E</kbd> 开启/关闭 · <kbd>S</kbd> 导出 HTML · <kbd>Esc</kbd> 退出</div>';
+  body.appendChild(toolbar);
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.id = 'toast';
+  body.appendChild(toast);
+
+  const statusEl = document.getElementById('editStatus');
+  const toastEl = document.getElementById('toast');
+  let editing = false;
+  let toastTimer = null;
+
+  function setEditing(on){
+    editing = on;
+    body.classList.toggle('editing', on);
+    statusEl.textContent = on ? 'ON' : 'OFF';
+    statusEl.classList.toggle('on', on);
+    statusEl.classList.toggle('off', !on);
+    document.querySelectorAll('[data-editable]').forEach(el => {
+      if(on){
+        el.setAttribute('contenteditable', 'true');
+      el.setAttribute('spellcheck', 'false');
+      } else {
+     el.removeAttribute('contenteditable');
+        el.removeAttribute('spellcheck');
+        if(document.activeElement === el) el.blur();
+      }
+    });
+    showToast(on ? '✏️ 编辑模式已开启，点击任何文字直接修改' : '✅ 已退出编辑模式');
+  }
+
+  function showToast(msg, ms=2000){
+    toastEl.innerHTML = msg;
+    toastEl.classList.add('show');
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), ms);
+  }
+
+  function exportHTML(){
+    const wasEditing = editing;
+    if(wasEditing) setEditing(false);
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.edit-toolbar, .toast').forEach(n => n.remove());
+    clone.querySelectorAll('[contenteditable]').forEach(n => {
+   n.removeAttribute('contenteditable');
+ n.removeAttribute('spellcheck');
+    });
+const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const ts = new Date().toISOString().slice(0,10).replace(/-/g,'');
+    a.href = url;
+    a.download = '哞来了_KOC案例_一页版_' + ts + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+ showToast('💾 已导出到 <b>下载文件夹</b>');
+    if(wasEditing) setTimeout(() => setEditing(true), 300);
+  }
+
+  document.addEventListener('keydown', function(e){
+    const inEditable = e.target.closest && e.target.closest('[contenteditable="true"]');
+    if(e.key === 'Escape'){ if(editing) setEditing(false); return; }
+    if(inEditable) return;
+    if(e.key === 'e' || e.key === 'E'){ e.preventDefault(); setEditing(!editing); }
+    else if(e.key === 's' || e.key === 'S'){
+      if(e.metaKey || e.ctrlKey) return;
+      e.preventDefault();
+      exportHTML();
+    }
+  });
+
+  setTimeout(() => showToast('按 <b>E</b> 进入编辑模式'), 500);
+})();
+</script>
+
+</body></html>
